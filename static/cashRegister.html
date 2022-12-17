@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CashRegister</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Martian+Mono:wght@300&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Martian Mono', monospace;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, rgb(0, 128, 75), rgba(128, 255, 244, 0.555), rgb(0, 128, 75)) no-repeat;
+            min-height: 100vh;
+            padding: 5px;
+        }
+
+        .glass-container {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 40px 50px #00000070, inset 2px 2px 4px rgba(255, 255, 255, 0.459);
+            border: 1px solid rgba(255, 255, 255, 0.705);
+        }
+
+        .inputContainer {
+            margin: auto;
+            margin-top: min(10px, 10vh);
+            max-width: 300px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inputContainer input {
+            border: 2px solid transparent;
+            border-bottom: 2px solid rgb(75, 75, 75);
+            background-color: transparent;
+            text-align: right;
+            margin: 10px;
+            width: 240px;
+            padding: 4px;
+            font-size: 18px;
+            outline: none;
+            /* width: 300px; */
+        }
+
+        .inputContainer input:focus {
+            border-bottom: 2px solid rgb(0, 255, 0);
+        }
+
+        .inputContainer button {
+            padding: 8px 20px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.096);
+            box-shadow: inset 2px 2px rgba(0, 0, 0, 0.233);
+            border: 1px solid transparent;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+            margin: 10px;
+        }
+
+        .inputContainer button:hover {
+            background-color: rgba(0, 255, 0, 0.274);
+            box-shadow: inset 0px 0px 10px green;
+        }
+
+        .inputContainer div {
+            margin-block: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputContainer glass-container">
+        <input type="text" name="cashAmount" id="cashpaid" placeholder="Cash Paid">
+        <input type="text" name="billAmount" id="billAmount" placeholder="Bill Amount">
+        <button id="giveRemaining">Minimum Cash</button>
+        <div class="minimumCashBalance"></div>
+    </div>
+    <script defer>
+        let cashPaid = document.getElementById('cashpaid');
+        let billAmount = document.getElementById('billAmount');
+
+        let giveRemaining = document.querySelector('#giveRemaining');
+        let minimumCurrencyPaid = document.querySelector('.minimumCashBalance')
+        giveRemaining.addEventListener('click', () => {
+            let balanceAmount = cashPaid.value - billAmount.value;
+
+            let possibleCurrency = [2000, 500, 200, 100, 50, 20, 10, 5, 2, 1];
+
+            let notes = [0];
+            // console.log(notes);
+            let minCurPaid = '';
+            for (let i = 0; i < possibleCurrency.length; i++) {
+                notes[possibleCurrency[i]] = Math.floor(balanceAmount / possibleCurrency[i]);
+                balanceAmount %= possibleCurrency[i];
+                if (notes[possibleCurrency[i]] > 0) {
+                    minCurPaid += `<b style="color:green";><em>Rs${possibleCurrency[i]}:</em></b> ${notes[possibleCurrency[i]]}<br><br>`;
+                }
+            }
+            minimumCurrencyPaid.innerHTML = minCurPaid;
+        })
+    </script>
+</body>
+
+</html>

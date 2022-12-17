@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PL calculator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Martian Mono', monospace;
+        }
+
+        body {
+            overflow-x: hidden;
+            background: linear-gradient(-45deg, rgb(0, 128, 75), rgba(128, 255, 244, 0.555), rgb(0, 128, 75)) no-repeat;
+            min-height: 100vh;
+            padding: 5px;
+        }
+
+        .glass-container {
+            background-color: rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+            backdrop-filter: blur(5px);
+            box-shadow: 0px 40px 50px #00000070, inset 2px 2px 4px rgba(255, 255, 255, 0.459);
+            border: 1px solid rgba(255, 255, 255, 0.705);
+        }
+
+        .inputContainer {
+            margin: auto;
+            margin-top: min(10px, 10vh);
+            max-width: 300px;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .inputContainer input {
+            border: 2px solid transparent;
+            border-bottom: 2px solid rgb(75, 75, 75);
+            background-color: transparent;
+            text-align: right;
+            margin: 10px;
+            width: 240px;
+            padding: 4px;
+            font-size: 18px;
+            outline: none;
+            /* width: 300px; */
+            transition: all 0.3s ease;
+        }
+
+        .inputContainer input:focus {
+            content: "";
+            border-bottom: 2px solid rgb(0, 255, 0);
+        }
+
+        .inputContainer button {
+            padding: 8px 20px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.096);
+            box-shadow: inset 2px 2px rgba(0, 0, 0, 0.233);
+            border: 1px solid transparent;
+            border-bottom: 1px solid white;
+            border-right: 1px solid white;
+            margin: 10px;
+        }
+
+        .inputContainer button:hover {
+            animation: profit_loss 2s linear infinite;
+        }
+
+        @keyframes profit_loss {
+
+            0%,
+            100% {
+                box-shadow: 0px 0px 10px rgb(255, 115, 0);
+                background-color: rgba(255, 102, 0, 0.726);
+            }
+
+            50% {
+                box-shadow: 0px 0px 10px rgb(0, 255, 0);
+                background-color: rgba(0, 255, 0, 0.514);
+            }
+        }
+
+        .profit_loss {
+            padding: 10px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="inputContainer glass-container">
+        <input type="text" name="initialP" id="initialP" placeholder="Initial price">
+        <input type="text" name="quantity" id="quantity" placeholder="Number of Stocks">
+        <input type="text" name="quantity" id="currentP" placeholder="Current price">
+        <button id="calculateMyProfit">P/L Calculate</button>
+        <div class="profit_loss">
+        </div>
+    </div>
+    <script defer>
+        let cp = document.getElementById('initialP');
+        let sp = document.getElementById('currentP');
+        let qty = document.getElementById('quantity')
+        let calc = document.getElementById('calculateMyProfit');
+        calc.addEventListener('click', () => {
+            let p_l = (sp.value - cp.value) * (qty.value);
+            let p_l_print = document.getElementsByClassName('profit_loss')[0];
+            p_l_print.innerHTML = p_l;
+            if (p_l > 0) {
+                p_l_print.style.color = 'green'
+            }
+            else{
+                p_l_print.style.color = 'red'
+            }
+        })
+
+    </script>
+
+</body>
+
+</html>

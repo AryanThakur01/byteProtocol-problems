@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Bebas Neue', cursive;
+    }
+
+    body {
+        overflow-x: hidden;
+        background: linear-gradient(-45deg, rgb(0, 128, 75), rgba(128, 255, 244, 0.555), rgb(0, 128, 75)) no-repeat;
+        min-height: 100vh;
+    }
+
+    .glass-container {
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 10px;
+        backdrop-filter: blur(5px);
+        box-shadow: 0px 40px 50px #00000070, inset 2px 2px 4px rgba(255, 255, 255, 0.459);
+        border: 1px solid rgba(255, 255, 255, 0.705);
+
+    }
+
+    section {
+        overflow-x: hidden;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: 20px;
+        border-radius: 10px;
+        flex-wrap: wrap;
+        min-height: fit-content;
+    }
+
+    .web-practice {
+        border-radius: 5px;
+        height: 200px;
+        /* padding: 10px; */
+        margin: 10px;
+        width: clamp(250px, 300px, 400px);
+        color: white;
+        text-decoration: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 30px;
+        color: rgb(61, 0, 131);
+        text-shadow: 2px 2px white;
+        overflow: hidden;
+    }
+
+    .web-practice:hover.web-practice:before {
+        content: "";
+        height: 500px;
+        width: 500px;
+        background-color: rgba(255, 255, 255, 0.432);
+        box-shadow: 3px 3px 10px white;
+        position: absolute;
+        top: -50px;
+        left: -800px;
+        transform: rotateZ(-45deg);
+        animation: shine 0.5s ease-out 1;
+    }
+
+    .web-practice:hover.web-practice:before {
+        content: "";
+        height: 500px;
+        width: 500px;
+        background-color: rgba(255, 255, 255, 0.432);
+        box-shadow: 3px 3px 10px white;
+        position: absolute;
+        top: -50px;
+        left: -90px;
+        transform: rotateZ(-45deg);
+    }
+
+    @keyframes shine {
+        0% {
+            left: -700px;
+
+        }
+
+        100% {
+            left: -90px;
+        }
+    }
+
+    .floating-glass {
+        position: fixed;
+        height: 100px;
+        width: 60px;
+        animation: dance 3s linear infinite;
+        animation-delay: calc(-1s * var(--i));
+    }
+
+    @keyframes dance {
+
+        0%,
+        100% {}
+
+        50% {
+            transform: translateY(calc(40px));
+        }
+    }
+
+
+    .floating-glass:nth-child(1) {
+        top: 20px;
+        left: 10%;
+    }
+
+    .floating-glass:nth-child(2) {
+        bottom: 55vh;
+        left: 45vw;
+        z-index: 2;
+    }
+
+    .floating-glass:nth-child(3) {
+        right: 5px;
+        top: 10px;
+    }
+
+    .floating-glass:nth-child(4) {
+        right: 10px;
+        top: 400px;
+        z-index: 1;
+    }
+</style>
+
+<body>
+    <div class="glass-container floating-glass" style="--i:1"></div>
+    <div class="glass-container floating-glass" style="--i:2"></div>
+    <div class="glass-container floating-glass" style="--i:3"></div>
+    <div class="glass-container floating-glass" style="--i:4"></div>
+    <section>
+        <a href="./static/imageResizer.html" class="glass-container web-practice problem-1">Image Resizer</a>
+        <a href="./static/cashRegister.html" class="glass-container web-practice problem-2" style="z-index: 2;">cash
+            Register</a>
+        <a href="./static/profitLossCalculator.html" class="glass-container web-practice problem-3"
+            style="z-index: 22;">Profit Loss Calculator</a>
+        <a href="./static/pageReplica.html" class="glass-container web-practice problem-4" style="padding: 20px;">Page Replica(Not Responsive
+            Yet)</a>
+    </section>
+</body>
+
+</html>

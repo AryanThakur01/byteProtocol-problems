@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>replica</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Exo', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            overflow-x: hidden;
+            margin: auto;
+        }
+
+        nav {
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding-block: 20px;
+            position: fixed;
+            width: 100vw;
+            margin-top: -100px;
+
+        }
+
+        .navigationLinks {
+            display: flex;
+            list-style: none;
+        }
+
+        .logo {
+            font-family: cursive;
+            font-size: 50px;
+            margin-bottom: -10px;
+            pointer-events: none;
+        }
+
+        .navigationLinks li {
+            padding: 2px;
+            margin: 5px;
+        }
+
+        .navigationLinks a {
+            text-decoration: none;
+            color: rgb(61, 61, 61);
+        }
+
+        .navigationLinks a:hover {
+            color: black;
+        }
+
+
+
+        /* making page geometry */
+        .page-geometry {
+            display: flex;
+            margin-top: 100px;
+            width: calc(100% - 20px);
+            padding: 10px;
+            /* background-color: yellow; */
+        }
+
+        /* left-side */
+        .imageContainer {
+            width: 70%;
+            /* background-color: yellow; */
+            padding: 10px;
+            padding-block: 0px;
+            margin-inline-end: 5px;
+        }
+
+        .major-page-image img {
+            max-width: 100%;
+        }
+
+        .bright-future {
+            display: flex;
+        }
+
+        .bright-future-head {
+            font-size: 25px;
+            width: 500px;
+            font-weight: bold;
+            padding-block: 10px;
+        }
+
+        .bright-future-more {
+            padding-block: 15px;
+            padding-inline: 5px;
+            font-size: 12px;
+            color: rgb(71, 71, 71);
+        }
+
+        .read-more-future {
+            background-color: red;
+            margin-block-start: 9px;
+            padding: 5px 15px;
+            cursor: pointer;
+        }
+
+        /* right-side */
+        .new {
+            margin-inline-start: 5px;
+            width: 30%;
+            background-color: rgba(0, 0, 0, 0.89);
+            padding: 10px;
+            color: #e2a146;
+            height: 300px;
+            overflow-y: scroll;
+        }
+
+        .new div {
+            color: white;
+            border-bottom: 1px solid wheat;
+            padding-block: 15px;
+        }
+
+        .new div h3 {
+            font-size: 15px;
+        }
+
+        .new div p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.61);
+        }
+
+
+        /* Card designing */
+        .card-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .cd {
+            display: flex;
+            width: 300px;
+            margin: 5px;
+        }
+
+
+        .cdImg img {
+            height: 110px;
+        }
+
+        .cdDesc {
+            padding-inline-start: 20px;
+            width: 300px;
+        }
+
+        .cdDesc p:nth-child(1) {
+            font-size: 25px;
+            font-weight: bold;
+            color: rgb(175, 175, 175);
+            
+        }
+
+        .cdDesc p:nth-child(2) {
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        .cdDesc p:nth-child(3) {
+            color: rgba(0, 0, 0, 0.616);
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="logo">W.</div>
+        <ul class="navigationLinks">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">New</a></li>
+            <li><a href="#">Popular</a></li>
+            <li><a href="#">Trending</a></li>
+            <li><a href="#">Categories</a></li>
+        </ul>
+    </nav>
+    <div class="page-geometry">
+        <div class="imageContainer">
+            <div class="major-page-image">
+                <img src="../images/01.jpeg" alt="">
+            </div>
+            <div class="bright-future">
+                <div class="bright-future-head">
+                    The Bright Future of Web 3.0?
+                </div>
+                <div class="bright-future-more">
+                    <p>We dive into the next evolution of the web that claims to put the power of the platforms back
+                        into the hands of the people. But is it really fulfilling its promise?</p>
+                    <button class="read-more-future">Read More</button>
+                </div>
+            </div>
+        </div>
+        <div class="new">
+            <h1>New</h1>
+            <div>
+                <h3>Hydrogen VS Eletric Cars</h2>
+                    <p>Will hydrogen-fueled cars ever catch up to EVs?</p>
+            </div>
+            <div>
+                <h3>The Downsides of AI Artistry</h3>
+                <p>What are the possible adverse effects of on-demand AI image generation?</p>
+            </div>
+            <div>
+                <h3>Is VC funding Drying UP?</h3>
+                <p>Private funding by VC firms is down 50%</p>
+            </div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <div class="card-list">
+        <div class="cd">
+            <div class="cdImg">
+                <img src="../images/02.jpeg" alt="">
+            </div>
+            <div class="cdDesc">
+                <p>01</p>
+                <p>Reviving Retro PCs</p>
+                <p>What happens when old PCs are given modern updates?</p>
+            </div>
+        </div>
+        <div class="cd">
+            <div class="cdImg">
+                <img src="../images/03.jpeg" alt="">
+            </div>
+            <div class="cdDesc">
+                <p>02</p>
+                <p>Top Laptops of 2022</p>
+                <p>Our best picks for various needs and budgets.</p>
+            </div>
+        </div>
+        <div class="cd">
+            <div class="cdImg">
+                <img src="../images/04.jpeg" alt="">
+            </div>
+            <div class="cdDesc">
+                <p>03</p>
+                <p>The Growth of Gaming</p>
+                <p>How the pandemic has sparked fresh opportunities</p>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>
