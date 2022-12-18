@@ -119,6 +119,96 @@
             height: 300px;
             overflow-y: scroll;
         }
+        #openNewList{
+            cursor: pointer;
+            padding: 0px 8px;
+            font-size: 40px;
+            background-color: transparent;
+            border: 0px;
+            margin-top: -15px;
+        }
+        #openNewList:hover{
+            color: lightgreen;
+        }
+
+        /* .newClose {
+            visibility: hidden;
+        } */
+
+        @media screen and (max-width: 700px) {
+
+            /* right side */
+            .new::before {
+                content: "";
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100vh;
+                width: 100vw;
+                background-color: rgba(0, 0, 0, 0.568);
+                z-index: -1;
+            }
+
+            .new {
+                position: absolute;
+                visibility: hidden;
+            }
+
+            .newSmallerScreen {
+                background-color: black;
+                z-index: 4;
+                position: fixed;
+                right: 0;
+                top: 0;
+                height: 100vh;
+                display: flex;
+                flex-direction: column;
+                align-self: center;
+                visibility: visible;
+                overflow-x: visible;
+                transition: all 1s ease;
+                animation: flowIn 1s ease-out;
+            }
+
+            @keyframes flowIn {
+                0%{
+                    right: -400px;
+                }
+                100%{
+                    right: 0;
+                }
+            }
+            
+
+            .newClose {
+                padding: 2px 10px;
+                margin-bottom: 40px;
+                font-size: 30px;
+                background-color: transparent;
+                cursor: pointer;
+                border: 1px solid transparent;
+                color: #e2a146;
+                font-weight: bold;
+                font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+                /* visibility: visible; */
+            }
+            .newClose:hover{
+                color: rgba(255, 142, 142, 0.555);
+            }
+
+            /* left side */
+
+            .imageContainer {
+                width: 100vw;
+                overflow-x: hidden;
+                padding: 10px;
+            }
+
+            .major-page-image img {
+                margin-left: -10px;
+                max-width: 170%;
+            }
+        }
 
         .new div {
             color: white;
@@ -143,6 +233,7 @@
             justify-content: space-between;
         }
 
+
         .cd {
             display: flex;
             width: 300px;
@@ -163,7 +254,7 @@
             font-size: 25px;
             font-weight: bold;
             color: rgb(175, 175, 175);
-            
+
         }
 
         .cdDesc p:nth-child(2) {
@@ -182,8 +273,8 @@
     <nav>
         <div class="logo">W.</div>
         <ul class="navigationLinks">
+            <li><button id="openNewList">=</button></li>
             <li><a href="#">Home</a></li>
-            <li><a href="#">New</a></li>
             <li><a href="#">Popular</a></li>
             <li><a href="#">Trending</a></li>
             <li><a href="#">Categories</a></li>
@@ -205,7 +296,9 @@
                 </div>
             </div>
         </div>
-        <div class="new">
+        <div class="beforeNew"></div>
+        <div class="new" id="newList">
+            <button class="newClose">X</button>
             <h1>New</h1>
             <div>
                 <h3>Hydrogen VS Eletric Cars</h2>
@@ -256,6 +349,20 @@
             </div>
         </div>
     </div>
+
+
+
+    <script>
+
+        const closeRightTab = document.getElementsByClassName('newClose')[0];
+        closeRightTab.addEventListener('click', () => {
+            document.getElementById('newList').classList.toggle("newSmallerScreen");
+        })
+        const rightOpen = document.getElementById('openNewList');
+        rightOpen.addEventListener('click', () => {
+            document.getElementById('newList').classList.toggle("newSmallerScreen");
+        })
+    </script>
 
 </body>
 
